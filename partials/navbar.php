@@ -61,7 +61,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Data Perusahaan:</h6>
             <a class="collapse-item" href="jabatan.php">Jabatan</a>
-            <a class="collapse-item" href="cards.html">pengurus</a>
+            <a class="collapse-item" href="pengurus.php">pengurus</a>
         </div>
     </div>
 </li>
@@ -79,7 +79,7 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Jenis Transaksi</h6>
-            <a class="collapse-item" href="utilities-color.html">Penerimaan Kas</a>
+            <a class="collapse-item" href="penerima_kas.php">Penerimaan Kas</a>
             <a class="collapse-item" href="utilities-border.html">Pengeluaran Kas</a>
         </div>
     </div>

@@ -15,6 +15,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
 $(document).ready(function(){
     $('.editBtn').on('click', function(){
         // Mendapatkan nilai atribut data dari tombol edit yang diklik
@@ -32,3 +34,22 @@ $(document).ready(function(){
         $('#edit_tunjangan').val(tunjangan);
     });
 });
+
+$(document).on("click", ".editBtn", function () {
+    var id = $(this).data('id');
+    var nama = $(this).data('nama');
+    var id_jabatan = $(this).data('id-jabatan');
+    var telepon = $(this).data('telepon');
+    var email = $(this).data('email');
+    var alamat = $(this).data('alamat');
+    var jenis_kelamin = $(this).data('jenis-kelamin');
+
+    $("#edit_id").val(id);
+    $("#edit_nama").val(nama);
+    $("#edit_id_jabatan").val(id_jabatan);
+    $("#edit_telepon").val(telepon);
+    $("#edit_email").val(email);
+    $("#edit_alamat").val(alamat);
+    $("#edit_jenis_kelamin").val(jenis_kelamin);
+});
+

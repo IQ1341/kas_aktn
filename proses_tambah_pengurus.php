@@ -1,20 +1,35 @@
 <?php
-include 'koneksi.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
-$nip = $_POST['nip'];
-// Ambil data pengurus lainnya dari form
-$nama = $_POST['nama'];
-$jenis_kelamin = $_POST['jenis_kelamin'];
-$alamat = $_POST['alamat'];
-$jabatan_id = $_POST['jabatan_id'];
-$nomor_hp = $_POST['nomor_hp'];
+include('inc/koneksi.php');
 
-$query = "INSERT INTO pengurus (nip, nama, jenis_kelamin, alamat, jabatan_id, nomor_hp) VALUES ('$nip', '$nama', '$jenis_kelamin', '$alamat', '$jabatan_id', '$nomor_hp')";
-$result = mysqli_query($koneksi, $query);
+// Pastikan data yang diterima valid
+if (isset($_POST['nama']) && isset($_POST['id_jabatan']) && isset($_POST['telepon']) && isset($_POST['email']) && isset($_POST['alamat']) && isset($_POST['jenis_kelamin'])) {
+    $nama = $_POST['nama'];
+    $id_jabatan = $_POST['id_jabatan'];
+    $telepon = $_POST['telepon'];
+    $email = $_POST['email'];
+    $alamat = $_POST['alamat'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
 
-if ($result) {
-    header('Location: pengurus.php');
+    // Lakukan proses tambah data pengurus ke dalam database
+    $query = "INSERT INTO pengurus (nama, id_jabatan, telepon, email, alamat, jenis_kelamin) VALUES ('$nama', '$id_jabatan', '$telepon', '$email', '$alamat', '$jenis_kelamin')";
+    $result = mysqli_query($koneksi, $query);
+
+    if ($result) {
+        // Jika proses tambah data berhasil, arahkan kembali ke halaman pengurus
+        header("Location: pengurus.php");
+        exit();
+    } else {
+        // Jika terjadi kesalahan, tampilkan pesan error
+        echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+    }
 } else {
-    echo 'Gagal menambah pengurus. <a href="pengurus.php">Kembali</a>';
+    // Jika data tidak lengkap, tampilkan pesan error
+    echo "Data yang diterima tidak lengkap";
 }
 ?>
