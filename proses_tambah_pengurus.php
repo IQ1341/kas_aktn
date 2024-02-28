@@ -22,7 +22,7 @@ if (isset($_POST['nama']) && isset($_POST['id_jabatan']) && isset($_POST['telepo
 
     if ($result) {
         // Jika proses tambah data berhasil, arahkan kembali ke halaman pengurus
-        header("Location: pengurus.php");
+        header("Location: pengurus_hrd.php");
         exit();
     } else {
         // Jika terjadi kesalahan, tampilkan pesan error

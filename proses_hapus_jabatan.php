@@ -1,30 +1,37 @@
 <?php
 session_start();
+include('inc/koneksi.php');
+
+// Periksa jika pengguna tidak masuk, arahkan kembali ke halaman login
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-include('inc/koneksi.php');
+// Ambil id jabatan yang akan dihapus
+$id_jabatan = $_GET['id'];
 
-// Pastikan parameter ID ada dalam URL
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+// Hapus terlebih dahulu data pengurus yang terkait dengan jabatan yang akan dihapus
+$query_hapus_pengurus = "DELETE FROM pengurus WHERE id_jabatan = $id_jabatan";
+$result_hapus_pengurus = mysqli_query($koneksi, $query_hapus_pengurus);
 
-    // Lakukan proses hapus di database
-    $query = "DELETE FROM jabatan WHERE id='$id'";
-    $result = mysqli_query($koneksi, $query);
+// Periksa apakah penghapusan pengurus berhasil
+if ($result_hapus_pengurus) {
+    // Jika penghapusan pengurus berhasil, lanjutkan dengan menghapus jabatan
+    $query_hapus_jabatan = "DELETE FROM jabatan WHERE id = $id_jabatan";
+    $result_hapus_jabatan = mysqli_query($koneksi, $query_hapus_jabatan);
 
-    if ($result) {
-        // Jika proses hapus berhasil, arahkan kembali ke halaman master data jabatan
-        header("Location: jabatan.php");
+    // Periksa apakah penghapusan jabatan berhasil
+    if ($result_hapus_jabatan) {
+        // Redirect atau lakukan tindakan lain setelah penghapusan berhasil
+        header("Location: jabatan_hrd.php");
         exit();
     } else {
-        // Jika terjadi kesalahan, tampilkan pesan error
-        echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        // Handle kesalahan jika penghapusan jabatan gagal
+        echo "Error: " . mysqli_error($koneksi);
     }
 } else {
-    // Jika parameter ID tidak ada, tampilkan pesan error
-    echo "ID tidak ditemukan";
+    // Handle kesalahan jika penghapusan pengurus gagal
+    echo "Error: " . mysqli_error($koneksi);
 }
 ?>

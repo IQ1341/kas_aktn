@@ -35,7 +35,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">KAS KU</div>
+    <div class="sidebar-brand-text mx-3">SIA Kas</div>
 </a>
 
 <!-- Divider -->
@@ -43,7 +43,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-    <a class="nav-link" href="dashboard.php">
+    <a class="nav-link" href="dashboard_kas.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -61,7 +61,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Data Perusahaan:</h6>
             <a class="collapse-item" href="jabatan.php">Jabatan</a>
-            <a class="collapse-item" href="pengurus.php">pengurus</a>
+            <a class="collapse-item" href="pengurus.php">pegawai</a>
         </div>
     </div>
 </li>
@@ -79,8 +79,7 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Jenis Transaksi</h6>
-            <a class="collapse-item" href="penerima_kas.php">Penerimaan Kas</a>
-            <a class="collapse-item" href="utilities-border.html">Pengeluaran Kas</a>
+            <a class="collapse-item" href="pengeluaran.php">Pengeluaran Kas</a>
         </div>
     </div>
 </li>
@@ -97,9 +96,8 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Laporan</h6>
-            <a class="collapse-item" href="utilities-color.html">Laporan Pemasukan</a>
-            <a class="collapse-item" href="utilities-border.html">Laporan Pengeluaran</a>
-            <a class="collapse-item" href="utilities-border.html">Laporan rekapitulasi</a>
+            <a class="collapse-item" href="laporan.php">Laporan Pengeluaran</a>
+
         </div>
     </div>
 </li>

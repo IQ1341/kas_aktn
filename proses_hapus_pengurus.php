@@ -1,30 +1,37 @@
 <?php
 session_start();
+include('inc/koneksi.php');
+
+// Periksa jika pengguna tidak masuk, arahkan kembali ke halaman login
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-include('inc/koneksi.php');
+// Ambil id pengurus yang akan dihapus
+$id_pengurus = $_GET['id'];
 
-// Pastikan ID pengurus yang akan dihapus tersedia
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+// Hapus terlebih dahulu data terkait di tabel penerimaan
+$query_hapus_penerimaan = "DELETE FROM pengeluaran WHERE pengurus_id = $id_pengurus";
+$result_hapus_penerimaan = mysqli_query($koneksi, $query_hapus_penerimaan);
 
-    // Lakukan proses hapus data dari database
-    $query = "DELETE FROM pengurus WHERE id='$id'";
-    $result = mysqli_query($koneksi, $query);
+// Periksa apakah penghapusan penerimaan berhasil
+if ($result_hapus_penerimaan) {
+    // Jika penghapusan penerimaan berhasil, lanjutkan dengan menghapus pengurus
+    $query_hapus_pengurus = "DELETE FROM pengurus WHERE id = $id_pengurus";
+    $result_hapus_pengurus = mysqli_query($koneksi, $query_hapus_pengurus);
 
-    if ($result) {
-        // Jika proses hapus berhasil, arahkan kembali ke halaman pengurus
-        header("Location: pengurus.php");
+    // Periksa apakah penghapusan pengurus berhasil
+    if ($result_hapus_pengurus) {
+        // Redirect atau lakukan tindakan lain setelah penghapusan berhasil
+        header("Location: pengurus_hrd.php");
         exit();
     } else {
-        // Jika terjadi kesalahan, tampilkan pesan error
-        echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        // Handle kesalahan jika penghapusan pengurus gagal
+        echo "Error: " . mysqli_error($koneksi);
     }
 } else {
-    // Jika ID tidak tersedia, tampilkan pesan error
-    echo "ID pengurus tidak tersedia";
+    // Handle kesalahan jika penghapusan penerimaan gagal
+    echo "Error: " . mysqli_error($koneksi);
 }
 ?>

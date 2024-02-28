@@ -27,9 +27,7 @@ include('inc/koneksi.php');
             <!-- Daftar jabatan -->
             <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahJabatanModal">
-            <i class="fas fa-plus-circle mr-2"></i> Tambah Jabatan
-        </button>
+        
         <?php include 'form/form_tambah_jabatan.php'; ?>
         <?php include 'form/form_edit_jabatan.php'; ?>
     </div>
@@ -42,7 +40,6 @@ include('inc/koneksi.php');
                         <th class="text-center">Nama Jabatan</th>
                         <th class="text-center">Gaji Pokok</th>
                         <th class="text-center">Tunjangan</th>
-                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,11 +54,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<td class='text-center'>" . $row['nama'] . "</td>";
     echo "<td class='text-center'>" . $row['gaji'] . "</td>";
     echo "<td class='text-center'>" . $row['tunjangan'] . "</td>";
-    echo "<td class='text-center'>";
-    echo "<button class='btn btn-info btn-sm editBtn' data-toggle='modal' data-target='#editJabatanModal' data-id='" . $row['id'] . "' data-kode='" . $row['kode'] . "' data-nama='" . $row['nama'] . "' data-gaji='" . $row['gaji'] . "' data-tunjangan='" . $row['tunjangan'] . "'><i class='fas fa-edit'></i> Edit</button>";
-    echo "<span class='mx-1'></span>";
-    echo "<a href='proses_hapus_jabatan.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Anda yakin ingin menghapus jabatan ini?\")'><i class='fas fa-trash'></i> Hapus</a>";
-    echo "</td>";
     echo "</tr>";
 }
 ?>

@@ -21,7 +21,7 @@ if (isset($_POST['edit_id']) && isset($_POST['edit_kode']) && isset($_POST['edit
 
     if ($result) {
         // Jika proses update berhasil, arahkan kembali ke halaman master data jabatan
-        header("Location: jabatan.php");
+        header("Location: jabatan_hrd.php");
         exit();
     } else {
         // Jika terjadi kesalahan, tampilkan pesan error

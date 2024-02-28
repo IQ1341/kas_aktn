@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "INSERT INTO jabatan (kode, nama, gaji, tunjangan) VALUES ('$kode', '$nama', '$gaji', '$tunjangan')";
     
     if (mysqli_query($koneksi, $query)) {
-        header("Location: jabatan.php");
+        header("Location: jabatan_hrd.php");
         exit();
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($koneksi);

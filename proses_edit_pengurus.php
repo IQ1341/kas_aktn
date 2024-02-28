@@ -23,7 +23,7 @@ if (isset($_POST['edit_id']) && isset($_POST['edit_nama']) && isset($_POST['edit
 
     if ($result) {
         // Jika proses update berhasil, arahkan kembali ke halaman pengurus
-        header("Location: pengurus.php");
+        header("Location: pengurus_hrd.php");
         exit();
     } else {
         // Jika terjadi kesalahan, tampilkan pesan error

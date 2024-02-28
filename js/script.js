@@ -53,3 +53,21 @@ $(document).on("click", ".editBtn", function () {
     $("#edit_jenis_kelamin").val(jenis_kelamin);
 });
 
+$(document).on("click", ".editBtn", function () {
+    var id = $(this).data('id');
+    var nomor_nota = $(this).data('nomor-nota');
+    var tanggal = $(this).data('tanggal');
+    var nama_pengurus = $(this).data('nama-pengurus');
+    var donatur = $(this).data('donatur');
+    var keterangan = $(this).data('keterangan');
+    var jumlah = $(this).data('jumlah');
+
+    $("#edit_id").val(id);
+    $("#edit_nomor_nota").val(nomor_nota);
+    $("#edit_tanggal").val(tanggal);
+    $("#edit_nama_pengurus").val(nama_pengurus);
+    $("#edit_donatur").val(donatur);
+    $("#edit_keterangan").val(keterangan);
+    $("#edit_jumlah").val(jumlah);
+});
+

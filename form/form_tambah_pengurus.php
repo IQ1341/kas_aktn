@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Pengurus</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Pegawai</h5>
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -19,16 +19,16 @@
             <div class="form-group col-md-6">
                 <label for="id_jabatan">Jabatan:</label>
                 <select class="form-control" id="id_jabatan" name="id_jabatan" required>
-                    <option value="">Pilih Jabatan</option>
-                    <?php
-                    include('inc/koneksi.php');
-                    $query = "SELECT * FROM jabatan";
-                    $result = mysqli_query($koneksi, $query);
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<option value='" . $row['id'] . "'>" . $row['nama'] . "</option>";
-                    }
-                    ?>
-                </select>
+                            <option value="">Pilih jabatan</option>
+                            <?php
+                            include('inc/koneksi.php');
+                            $query = "SELECT * FROM jabatan";
+                            $result = mysqli_query($koneksi, $query);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<option value='" . $row['id'] . "'>" . $row['nama'] . "</option>";
+                            }
+                            ?>
+                        </select>
             </div>
         </div>
         <div class="form-row">
